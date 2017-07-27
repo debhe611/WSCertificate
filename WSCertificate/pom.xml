@@ -10,7 +10,43 @@
     <groupId>org.demoiselle.jee</groupId>
     <artifactId>demoiselle-parent-rest</artifactId>
     <version>3.0.0</version>
-</parent>
-  
+ </parent>
+ 
+<build>
+<finalName>${project.artifactId}</finalName>
+<plugins>
+
+	 <plugin>
+		 <groupId>org.apache.maven.plugins</groupId>
+		 <artifactId>maven-war-plugin</artifactId>
+		 <version>2.3</version>
+		 <configuration>
+		 	<failOnMissingWebXml>false</failOnMissingWebXml>
+		 	<warName>WSCertificate</warName>
+		 	<wtpContextName>WSCertificate</wtpContextName>
+		</configuration>
+       </plugin>
+</plugins>
+
+</build>
+
+<dependencies>
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.0.pr4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+<dependency>
+    <groupId>com.thoughtworks.xstream</groupId>
+    <artifactId>xstream</artifactId>
+    <version>1.4.10</version>
+</dependency>
+	
+
+</dependencies>
+    
 </project>
 
