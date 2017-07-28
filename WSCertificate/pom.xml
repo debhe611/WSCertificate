@@ -32,23 +32,9 @@
 
 	</dependencies>
 
-		<!-- 
 	<build>
-		<finalName>WSCertificate2</finalName>
-		<plugins> 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<warName>WSCertificate</warName>
-					<wtpContextName>WSCertificate</wtpContextName>
-				</configuration>
-			</plugin>
-		</plugins>
-
+		<finalName>WSCertificate</finalName>
 	</build>
-		 -->
+	
 </project>
 
