@@ -1,4 +1,4 @@
-package br.gov.serpro.ws.service;
+package br.gov.serpro.ws.domain;
 
 import java.io.Serializable;
 
@@ -8,13 +8,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Resposta implements Serializable{
 
 	/**
-	 * 
+	 * Serial version id.
 	 */
 	public static final long serialVersionUID = 1L;
 	
 	private int i;
-	
 	public String status;
+
+	public Resposta(int i, String status) {
+		super();
+		this.i = i;
+		this.status = status;
+	}
 
 	public int getI() {
 		return i;
@@ -31,17 +36,8 @@ public class Resposta implements Serializable{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public static Resposta from(TipoResposta tipoResposta) {
+		return new Resposta(tipoResposta.getCodigo(), tipoResposta.getMensagem());
 	}
-
-	public Resposta(int i, String status) {
-		super();
-		this.i = i;
-		this.status = status;
-	}
-
-
-
 }
