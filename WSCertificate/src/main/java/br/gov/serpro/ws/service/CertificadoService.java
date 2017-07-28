@@ -15,6 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.gov.serpro.ws.business.CertificadoBC;
 import br.gov.serpro.ws.constants.RespostaEnum;
 import br.gov.serpro.ws.constants.TipoRespostaEnum;
 import br.gov.serpro.ws.facade.IRetorno;
@@ -25,54 +26,36 @@ import com.thoughtworks.xstream.XStream;
 
 @Path("certificado")
 public class CertificadoService {
-
+	
 	@Inject
-	private CertificadoUtil certificadoUtil;
-
-	@Inject
-	private CpfUtil cpfUtil;
+	private CertificadoBC certificadoBc;
 
 	@GET
 	@Produces("application/json")
 	@Path("/teste")
 	public Resposta teste() {
-		System.out.println("ENTROU");
+		
 		return new Resposta(3, "teste3");
 	}
 
 	@GET
-	@Produces({ "application/json"})
+	@Produces({ "application/xml" ,"application/json"})
 	@Path("/validarCertificado/{cpf}")
-	public RespostaEnum validarCertificado(@PathParam("cpf") String cpf) {
-		String cpfExtraido = certificadoUtil.extrairCPf(new Object());
+	public Resposta validarCertificado(@PathParam("cpf") String certificado) {
+		
+		return certificadoBc.validarCertificado(certificado);
 
-		IRetorno retorno;
-
-		if (!cpfUtil.cpfValido(cpf)) {
-			return RespostaEnum.ERRO_CPF_INVALIDO;
-		}
-
-		return RespostaEnum.SUCESSO;
 	}
 
 	@GET
 	@Produces({ "application/xml" })
 	@Path("/validarCertificadoX/{cpf}")
-	public Object validarCertificadoX(@PathParam("cpf") String cpf) {
-		
-		String cpfExtraido = certificadoUtil.extrairCPf(new Object());
+	public Object validarCertificadoX(@PathParam("cpf") String cpf) {		
 
 		IRetorno retorno = FabricaRetornoResultado.criarRetorno(TipoRespostaEnum.XML);
 		return retorno.retornaResultado(RespostaEnum.ERRO_CPF_INVALIDO);
 
 	}
 
-	// ITimeArquivoHelper helper =
-	// FabricaTimeArquivoHelper.criarHelper(TipoArquivo.TXT);
-	// helper.lerTimeDoArquivo(caminho);
-	// } else if (opcao == 6) {
-	//
-	// ITimeArquivoHelper helper =
-	// FabricaTimeArquivoHelper.criarHelper(TipoArquivo.XML);
-	// helper.lerTimeDoArquivo(caminho);
+
 }

@@ -2,6 +2,9 @@ package br.gov.serpro.ws.service;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement 
 public class Resposta implements Serializable{
 
 	/**

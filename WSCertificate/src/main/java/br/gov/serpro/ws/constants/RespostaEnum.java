@@ -8,9 +8,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @XmlRootElement 
 public enum RespostaEnum {
 	
-	SUCESSO(1,"SUCESSO"),
-	ERRO_CPF_INVALIDO(200,"CPF INVALIDO"),
-	ERRO_CPF_NAO_ENCONTRADO(201,"CPF NAO ENCONTRADO");
+	SUCESSO(1,"OK"),
+	ERRO_CPF_INVALIDO(200,"CPF_INVALIDO"),
+	ERRO_CPF_NAO_ENCONTRADO(201,"CPF_NAO_ENCONTRADO");
+	
 		
     private int status;
     private String mensagem;
@@ -27,5 +28,7 @@ public enum RespostaEnum {
 		this.status = codigo;
 		this.mensagem = mensagem;
 	}
+	
+	
 
 }

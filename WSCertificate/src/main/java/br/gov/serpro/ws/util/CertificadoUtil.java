@@ -4,7 +4,8 @@ public class CertificadoUtil {
 	
 	public String extrairCPf(Object certificado)
 	{
-		return "123456890";
+		//Extrair CPF do certificado
+		return certificado.toString();
 	}
 
 }
